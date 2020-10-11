@@ -16,19 +16,9 @@ function App() {
   }, []);
 
   return questions.length > 0 ? (
-    <div className="container">
-      <div>
-        <h2 dangerouslySetInnerHTML={{ __html: questions[0].question }}></h2>
-      </div>
-      <div>
-        <div>{questions[0].correct_answer}</div>
-        <div>{questions[0].incorrect_answers[0]}</div>
-        <div>{questions[0].incorrect_answers[1]}</div>
-        <div>{questions[0].incorrect_answers[2]}</div>
-      </div>
-    </div>
+    <div className="container"></div>
   ) : (
-    <h2>Loading..</h2>
+    <h2>Loading.. please wait</h2>
   );
 }
 
