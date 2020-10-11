@@ -11,19 +11,22 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setQuestions(data.results);
       });
   }, []);
 
-  return (
+  return questions.length > 0 ? (
     <div className="container">
-      <div>Question</div>
+      <div>{questions[0].question}</div>
       <div>
-        <div>Answer 1</div>
-        <div>Answer 2</div>
-        <div>Answer 3</div>
-        <div>Answer 4</div>
+        <div>{questions[0].correct_answer}</div>
+        <div>{questions[0].incorrect_answers[0]}</div>
+        <div>{questions[0].incorrect_answers[1]}</div>
+        <div>{questions[0].incorrect_answers[2]}</div>
       </div>
     </div>
+  ) : (
+    <h2>Loading..</h2>
   );
 }
 
