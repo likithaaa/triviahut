@@ -21,14 +21,20 @@ function App() {
   const handleAnswer = (answer) => {
     // check for answer
     // show another question and change score if correct
-    setCurrentIndex(currentIndex + 1);
+    const newIndex = currentIndex + 1;
+    setCurrentIndex(newIndex);
     if (answer === questions[currentIndex].correct_answer) {
       // increase score
       setScore(score + 1);
     }
+    if (newIndex >= questions.length) {
+      setFinishGame(true);
+    }
   };
 
-  return questions.length > 0 ? (
+  return finishGame ? (
+    <div>Your score is {score}</div>
+  ) : questions.length > 0 ? (
     <div className="container">
       <Question data={questions[currentIndex]} handleAnswer={handleAnswer} />
     </div>
