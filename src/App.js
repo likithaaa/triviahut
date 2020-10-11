@@ -17,7 +17,9 @@ function App() {
 
   return questions.length > 0 ? (
     <div className="container">
-      <div>{questions[0].question}</div>
+      <div>
+        <h2 dangerouslySetInnerHTML={{ __html: questions[0].question }}></h2>
+      </div>
       <div>
         <div>{questions[0].correct_answer}</div>
         <div>{questions[0].incorrect_answers[0]}</div>
