@@ -7,6 +7,8 @@ const API_URL = 'https://opentdb.com/api.php?amount=10&type=multiple';
 function App() {
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [score, setScore] = useState(0);
+  const [finishGame, setFinishGame] = useState(false);
 
   useEffect(() => {
     fetch(API_URL)
@@ -20,6 +22,10 @@ function App() {
     // check for answer
     // show another question and change score if correct
     setCurrentIndex(currentIndex + 1);
+    if (answer === questions[currentIndex].correct_answer) {
+      // increase score
+      setScore(score + 1);
+    }
   };
 
   return questions.length > 0 ? (
