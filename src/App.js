@@ -16,9 +16,13 @@ function App() {
       });
   }, []);
 
+  const handleAnswer = (answer) => {
+    // check for answer
+  };
+
   return questions.length > 0 ? (
     <div className="container">
-      <Question data={questions[0]} />
+      <Question data={questions[0]} handleAnswer={handleAnswer} />
     </div>
   ) : (
     <h2>Loading.. please wait</h2>
