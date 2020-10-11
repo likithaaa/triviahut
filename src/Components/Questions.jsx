@@ -1,5 +1,7 @@
 import React from 'react';
 
+const AnswerButton = ({ answer }) => <button>{answer}</button>;
+
 const Question = ({
   data: { question, correct_answer, incorrect_answers },
 }) => (
@@ -8,10 +10,12 @@ const Question = ({
       <h2 dangerouslySetInnerHTML={{ __html: question }}></h2>
     </div>
     <div>
-      <button>{correct_answer}</button>
-      <button>{incorrect_answers[0]}</button>
-      <button>{incorrect_answers[1]}</button>
-      <button>{incorrect_answers[2]}</button>
+      <AnswerButton answer={correct_answer} />
+      <AnswerButton answer={incorrect_answers[0]} />
+      <AnswerButton answer={incorrect_answers[1]} />
+      <AnswerButton answer={incorrect_answers[2]} />
     </div>
   </div>
 );
+
+export default Question;
