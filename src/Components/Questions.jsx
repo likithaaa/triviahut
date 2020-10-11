@@ -1,13 +1,5 @@
 import React from 'react';
 
-const AnswerButton = ({ answer, className }) => (
-  <button
-    className={`bg-white p-4 text-purple-800 font-semibold rounded shadow ${className}`}
-  >
-    {answer}
-  </button>
-);
-
 const Question = ({
   handleAnswer,
   data: { question, correct_answer, incorrect_answers },
@@ -23,26 +15,16 @@ const Question = ({
       </div>
 
       <div className="grid grid-cols-2 gap-6 mt-6">
-        <AnswerButton
-          className={correct_answer === shuffleAnswer[0] ? 'bg-purple-300' : ''}
-          onClick={() => handleAnswer(shuffleAnswer[0])}
-          answer={shuffleAnswer[0]}
-        />
-        <AnswerButton
-          className={correct_answer === shuffleAnswer[1] ? 'bg-purple-300' : ''}
-          onClick={() => handleAnswer(shuffleAnswer[1])}
-          answer={shuffleAnswer[1]}
-        />
-        <AnswerButton
-          className={correct_answer === shuffleAnswer[2] ? 'bg-purple-300' : ''}
-          onClick={() => handleAnswer(shuffleAnswer[2])}
-          answer={shuffleAnswer[2]}
-        />
-        <AnswerButton
-          className={correct_answer === shuffleAnswer[3] ? 'bg-purple-300' : ''}
-          onClick={() => handleAnswer(shuffleAnswer[3])}
-          answer={shuffleAnswer[3]}
-        />
+        {shuffleAnswer.map((answer) => (
+          <button
+            className={`${
+              correct_answer === answer ? 'bg-purple-300' : 'bg-white'
+            } p-4 text-purple-800 font-semibold rounded shadow`}
+            onClick={() => handleAnswer(answer)}
+          >
+            {answer}
+          </button>
+        ))}
       </div>
     </div>
   );
