@@ -39,8 +39,13 @@ function App() {
       if (answer === questions[currentIndex].correct_answer) {
         setScore(score + 1);
       }
-      setShowAnswers(true);
     }
+    setShowAnswers(true);
+  };
+
+  const handleNextQuestion = () => {
+    setCurrentIndex(currentIndex + 1);
+    setShowAnswers(false);
   };
 
   return questions.length > 0 ? (
@@ -53,6 +58,7 @@ function App() {
         <Question
           data={questions[currentIndex]}
           showAnswers={showAnswers}
+          handleNextQuestion={handleNextQuestion}
           handleAnswer={handleAnswer}
         />
       )}

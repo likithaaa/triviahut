@@ -3,6 +3,7 @@ import React from 'react';
 const Question = ({
   showAnswers,
   handleAnswer,
+  handleNextQuestion,
   data: { question, correct_answer, incorrect_answers },
 }) => {
   const shuffleAnswer = [correct_answer, ...incorrect_answers].sort(
@@ -34,6 +35,7 @@ const Question = ({
       </div>
       {showAnswers && (
         <button
+          onClick={handleNextQuestion}
           className={`ml-auto bg-purple-300 text-purple-800  p-4 font-semibold rounded shadow mt-5`}
         >
           Next Question
