@@ -17,13 +17,10 @@ const Question = ({
       <div className="grid grid-cols-2 gap-6 mt-6">
         {shuffleAnswer.map((answer) => (
           <button
-            className={`${
-              correct_answer === answer ? 'bg-purple-300' : 'bg-white'
-            } p-4 text-purple-800 font-semibold rounded shadow`}
+            className="bg-white p-4 text-purple-800 font-semibold rounded shadow"
             onClick={() => handleAnswer(answer)}
-          >
-            {answer}
-          </button>
+            dangerouslySetInnerHTML={{ __html: answer }}
+          />
         ))}
       </div>
     </div>

@@ -33,7 +33,7 @@ function App() {
   };
 
   return finishGame ? (
-    <div>Your score is {score}</div>
+    <h2 className="text-white text-3xl font-bold">Your score is {score}</h2>
   ) : questions.length > 0 ? (
     <div className="container">
       <Question data={questions[currentIndex]} handleAnswer={handleAnswer} />
