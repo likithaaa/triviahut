@@ -4,12 +4,8 @@ const Question = ({
   showAnswers,
   handleAnswer,
   handleNextQuestion,
-  data: { question, correct_answer, incorrect_answers },
+  data: { question, correct_answer, answers },
 }) => {
-  const shuffleAnswer = [correct_answer, ...incorrect_answers].sort(
-    () => Math.random() - 0.5
-  );
-
   return (
     <div className="flex flex-col">
       <div className="bg-white text-purple-800 p-10 rounded shadow-md">
@@ -17,7 +13,7 @@ const Question = ({
       </div>
 
       <div className="grid grid-cols-2 gap-6 mt-6">
-        {shuffleAnswer.map((answer) => {
+        {answers.map((answer) => {
           const color = showAnswers
             ? answer === correct_answer
               ? 'bg-green-500'
