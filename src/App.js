@@ -9,6 +9,7 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [finishGame, setFinishGame] = useState(false);
+  const [showAnswers, setShowAnswers] = useState(false);
 
   useEffect(() => {
     fetch(API_URL)
@@ -27,6 +28,8 @@ function App() {
       // increase score
       setScore(score + 1);
     }
+    setShowAnswers(true);
+
     if (newIndex >= questions.length) {
       setFinishGame(true);
     }
@@ -36,7 +39,11 @@ function App() {
     <h2 className="text-white text-3xl font-bold">Your score is {score}</h2>
   ) : questions.length > 0 ? (
     <div className="container">
-      <Question data={questions[currentIndex]} handleAnswer={handleAnswer} />
+      <Question
+        data={questions[currentIndex]}
+        showAnswers={showAnswers}
+        handleAnswer={handleAnswer}
+      />
     </div>
   ) : (
     <h2>Loading.. please wait</h2>

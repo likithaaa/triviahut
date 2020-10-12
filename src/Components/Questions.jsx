@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Question = ({
+  showAnswers,
   handleAnswer,
   data: { question, correct_answer, incorrect_answers },
 }) => {
@@ -15,13 +16,21 @@ const Question = ({
       </div>
 
       <div className="grid grid-cols-2 gap-6 mt-6">
-        {shuffleAnswer.map((answer) => (
-          <button
-            className="bg-white p-4 text-purple-800 font-semibold rounded shadow"
-            onClick={() => handleAnswer(answer)}
-            dangerouslySetInnerHTML={{ __html: answer }}
-          />
-        ))}
+        {shuffleAnswer.map((answer) => {
+          const color = showAnswers
+            ? answer === correct_answer
+              ? 'bg-green-500'
+              : 'bg-red-500'
+            : 'bg-white';
+
+          return (
+            <button
+              className={`${color} p-4 text-purple-800 font-semibold rounded shadow`}
+              onClick={() => handleAnswer(answer)}
+              dangerouslySetInnerHTML={{ __html: answer }}
+            />
+          );
+        })}
       </div>
     </div>
   );
