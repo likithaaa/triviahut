@@ -1,4 +1,5 @@
 import React from 'react';
+import '../index.css';
 
 const Question = ({
   showAnswers,
@@ -8,7 +9,7 @@ const Question = ({
 }) => {
   return (
     <div className="flex flex-col">
-      <div className="bg-white text-purple-800 p-10 rounded shadow-md">
+      <div className="bg-white text-indigo-700 p-10 rounded shadow-md">
         <h2 dangerouslySetInnerHTML={{ __html: question }}></h2>
       </div>
 

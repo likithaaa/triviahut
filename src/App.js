@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import Question from './Components/Questions';
+import './index.css';
 
 const API_URL = 'https://opentdb.com/api.php?amount=10&type=multiple';
 
