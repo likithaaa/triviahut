@@ -8,7 +8,6 @@ function App() {
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [finishGame, setFinishGame] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
 
   useEffect(() => {
@@ -19,31 +18,44 @@ function App() {
       });
   }, []);
 
-  const handleAnswer = (answer) => {
-    // check for answer
-    // show another question and change score if correct
-    const newIndex = currentIndex + 1;
-    setCurrentIndex(newIndex);
-    if (answer === questions[currentIndex].correct_answer) {
-      // increase score
-      setScore(score + 1);
-    }
-    setShowAnswers(true);
+  // const handleAnswer = (answer) => {
+  //   setShowAnswers(false);
+  //   const newIndex = currentIndex + 1;
+  //   setCurrentIndex(newIndex);
+  //   // prevents double answers
+  //   if (!showAnswers) {
+  //     // check for answer
+  //     // show another question and change score if correct
+  //     if (answer === questions[currentIndex].correct_answer) {
+  //       // increase score
+  //       setScore(score + 1);
+  //     }
+  //   }
+  //   setShowAnswers(true);
+  // };
 
-    if (newIndex >= questions.length) {
-      setFinishGame(true);
+  const handleAnswer = (answer) => {
+    if (!showAnswers) {
+      if (answer === questions[currentIndex].correct_answer) {
+        setScore(score + 1);
+      }
+      setShowAnswers(true);
     }
   };
 
-  return finishGame ? (
-    <h2 className="text-white text-3xl font-bold">Your score is {score}</h2>
-  ) : questions.length > 0 ? (
+  return questions.length > 0 ? (
     <div className="container">
-      <Question
-        data={questions[currentIndex]}
-        showAnswers={showAnswers}
-        handleAnswer={handleAnswer}
-      />
+      {currentIndex >= questions.length ? (
+        <h2 className="text-white text-3xl font-bold">
+          Your score is {score}.
+        </h2>
+      ) : (
+        <Question
+          data={questions[currentIndex]}
+          showAnswers={showAnswers}
+          handleAnswer={handleAnswer}
+        />
+      )}
     </div>
   ) : (
     <h2>Loading.. please wait</h2>

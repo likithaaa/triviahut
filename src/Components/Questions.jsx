@@ -10,7 +10,7 @@ const Question = ({
   );
 
   return (
-    <div>
+    <div className="flex flex-col">
       <div className="bg-white text-purple-800 p-10 rounded shadow-md">
         <h2 dangerouslySetInnerHTML={{ __html: question }}></h2>
       </div>
@@ -32,6 +32,13 @@ const Question = ({
           );
         })}
       </div>
+      {showAnswers && (
+        <button
+          className={`ml-auto bg-purple-300 text-purple-800  p-4 font-semibold rounded shadow mt-5`}
+        >
+          Next Question
+        </button>
+      )}
     </div>
   );
 };
