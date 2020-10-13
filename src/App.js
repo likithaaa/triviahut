@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Question from './Components/Questions';
 import './index.css';
 
-const API_URL = 'https://opentdb.com/api.php?amount=10&type=multiple';
+const API_URL =
+  'https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple';
 
 function App() {
   const [questions, setQuestions] = useState([]);
@@ -58,8 +59,10 @@ function App() {
   return questions.length > 0 ? (
     <div className="container">
       {currentIndex >= questions.length ? (
-        <h2 className="text-white text-3xl font-bold">
-          Your score is {score}.
+        <h2 className="text-white text-3xl font-bold scorePage">
+          Thank you for playing TriviaHut! <br></br> Your score is {score}.{' '}
+          <br></br>
+          <h4 className="madeBy"> 💙 made by likitha 💙</h4>
         </h2>
       ) : (
         <Question

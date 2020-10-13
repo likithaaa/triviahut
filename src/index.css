@@ -37,3 +37,12 @@
 .color9 {
   color: rgb(232, 144, 144);
 }
+
+.scorePage {
+  margin-top: 50px;
+  line-height: 70px;
+}
+
+.madeBy {
+  margin-top: 100px;
+}
